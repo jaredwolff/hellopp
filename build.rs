@@ -1,11 +1,12 @@
-extern crate gcc;
+extern crate cc;
 
-use gcc::Config;
+use cc::Build;
 
 fn main() {
-    Config::new()
+    Build::new()
         .cpp(true)
         .file("hellopp.cc")
+        .cpp_link_stdlib("stdc++")
         .compile("libhellopp.a");
 
     println!("cargo:rerun-if-changed=build.rs");
